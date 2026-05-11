@@ -371,27 +371,48 @@
           <h2 class="text-3xl font-extrabold text-charcoal dark:text-off-white mt-2">Commission Details</h2>
         </div>
 
-        <div class="space-y-6">
+        <div class="space-y-4">
           
-          <div class="bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-gray-800 rounded-xl p-6">
-            <h4 class="text-lg font-bold text-charcoal dark:text-off-white mb-3">How does the payment structure work?</h4>
-            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-              We require a 50% deposit to begin the design and sourcing phase. The remaining 50% is due upon completion, right before the rug is shipped directly to your home. We provide regular photo updates throughout the weaving process.
-            </p>
+          <div class="bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden transition-all duration-300">
+            <button class="faq-button w-full flex justify-between items-center p-6 focus:outline-none group">
+              <h4 class="text-lg font-bold text-charcoal dark:text-off-white mb-0 text-left group-hover:text-soft-gold transition-colors duration-300">How does the payment structure work?</h4>
+              <i class="fas fa-chevron-down text-soft-gold transition-transform duration-300 faq-icon text-sm ml-4"></i>
+            </button>
+            <div class="faq-content grid transition-all duration-300 ease-in-out" style="grid-template-rows: 0fr;">
+              <div class="overflow-hidden">
+                <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed pb-6 px-6 pt-0">
+                  We require a 50% deposit to begin the design and sourcing phase. The remaining 50% is due upon completion, right before the rug is shipped directly to your home. We provide regular photo updates throughout the weaving process.
+                </p>
+              </div>
+            </div>
           </div>
 
-          <div class="bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-gray-800 rounded-xl p-6">
-            <h4 class="text-lg font-bold text-charcoal dark:text-off-white mb-3">Can I match the rug to my existing furniture?</h4>
-            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-              Absolutely. During the design revision phase, you can send us fabric swatches, paint chips, or photos of your room. Our dye masters will custom-mix botanical dyes to ensure the rug perfectly complements your interior space.
-            </p>
+          <div class="bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden transition-all duration-300">
+            <button class="faq-button w-full flex justify-between items-center p-6 focus:outline-none group">
+              <h4 class="text-lg font-bold text-charcoal dark:text-off-white mb-0 text-left group-hover:text-soft-gold transition-colors duration-300">Can I match the rug to my existing furniture?</h4>
+              <i class="fas fa-chevron-down text-soft-gold transition-transform duration-300 faq-icon text-sm ml-4"></i>
+            </button>
+            <div class="faq-content grid transition-all duration-300 ease-in-out" style="grid-template-rows: 0fr;">
+              <div class="overflow-hidden">
+                <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed pb-6 px-6 pt-0">
+                  Absolutely. During the design revision phase, you can send us fabric swatches, paint chips, or photos of your room. Our dye masters will custom-mix botanical dyes to ensure the rug perfectly complements your interior space.
+                </p>
+              </div>
+            </div>
           </div>
 
-          <div class="bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-gray-800 rounded-xl p-6">
-            <h4 class="text-lg font-bold text-charcoal dark:text-off-white mb-3">Do you offer international shipping?</h4>
-            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-              Yes, we ship globally via insured art-courier services. Shipping costs are calculated based on the final weight and dimensions of the rug, and will be included in your final invoice prior to dispatch.
-            </p>
+          <div class="bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden transition-all duration-300">
+            <button class="faq-button w-full flex justify-between items-center p-6 focus:outline-none group">
+              <h4 class="text-lg font-bold text-charcoal dark:text-off-white mb-0 text-left group-hover:text-soft-gold transition-colors duration-300">Do you offer international shipping?</h4>
+              <i class="fas fa-chevron-down text-soft-gold transition-transform duration-300 faq-icon text-sm ml-4"></i>
+            </button>
+            <div class="faq-content grid transition-all duration-300 ease-in-out" style="grid-template-rows: 0fr;">
+              <div class="overflow-hidden">
+                <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed pb-6 px-6 pt-0">
+                  Yes, we ship globally via insured art-courier services. Shipping costs are calculated based on the final weight and dimensions of the rug, and will be included in your final invoice prior to dispatch.
+                </p>
+              </div>
+            </div>
           </div>
 
         </div>
@@ -555,6 +576,28 @@
     // Initialize dropdowns
     setupMobileDropdown('mobile-home-dropdown', 'mobile-home-menu', 'mobile-home-icon');
     setupMobileDropdown('mobile-dashboard-dropdown', 'mobile-dashboard-menu', 'mobile-dashboard-icon');
+
+    // FAQ Accordion Toggle
+    const faqButtons = document.querySelectorAll('.faq-button');
+    
+    faqButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const content = button.nextElementSibling;
+        const icon = button.querySelector('.faq-icon');
+        const isOpen = content.style.gridTemplateRows === '1fr';
+        
+        // Optional: Close all other FAQs
+        document.querySelectorAll('.faq-button').forEach(otherBtn => {
+          otherBtn.nextElementSibling.style.gridTemplateRows = '0fr';
+          otherBtn.querySelector('.faq-icon').classList.remove('rotate-180');
+        });
+
+        if (!isOpen) {
+          content.style.gridTemplateRows = '1fr';
+          icon.classList.add('rotate-180');
+        }
+      });
+    });
 
   </script>
 </body>

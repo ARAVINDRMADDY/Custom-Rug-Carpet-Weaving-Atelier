@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 Page Not Found - WeaveNest Atelier</title>
+  <link rel="icon" type="image/jpeg" href="image\fair icon.jpg">
+  <meta name="description" content="The page you are looking for could not be found.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <script>
+    tailwind.config = { 
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            'soft-gold': '#CBA135',
+            'charcoal': '#1C1C1C',
+            'off-white': '#FAF9F6',
+            'muted-grey': '#888888'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    [dir="rtl"] { direction: rtl; }
+    
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in { animation: fadeInUp 0.8s ease-out; }
+
+    /* RTL Support for abstract circles */
+    [dir="rtl"] .animated-circle-left {
+      left: auto;
+      right: 2.5rem;
+    }
+
+    [dir="rtl"] .animated-circle-right {
+      right: auto;
+      left: 2.5rem;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased transition-colors duration-300 bg-off-white dark:bg-charcoal flex flex-col min-h-screen text-charcoal dark:text-off-white">
+
+  <main class="flex-grow flex items-center justify-center relative px-4 py-20 overflow-hidden bg-off-white dark:bg-charcoal">
+    <div class="animated-circle-left absolute top-1/4 ltr:left-10 rtl:right-10 w-72 h-72 bg-soft-gold/20 rounded-full blur-3xl animate-pulse pointer-events-none" style="animation-duration: 3s;"></div>
+    <div class="animated-circle-right absolute bottom-1/4 ltr:right-10 rtl:left-10 w-96 h-96 bg-muted-grey/20 dark:bg-white/5 rounded-full blur-3xl animate-pulse pointer-events-none" style="animation-delay: 1.5s; animation-duration: 4s;"></div>
+
+    <div class="relative z-10 text-center max-w-2xl mx-auto animate-fade-in">
+      <h1 class="text-[150px] md:text-[200px] leading-none font-black text-soft-gold opacity-50 dark:opacity-20 select-none tracking-tighter mix-blend-multiply dark:mix-blend-normal">404</h1>
+      
+      <div class="relative z-20 mt-8">
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="index.html" class="w-full sm:w-auto inline-flex items-center justify-center px-10 py-4 bg-charcoal hover:bg-soft-gold dark:bg-off-white dark:hover:bg-soft-gold text-off-white dark:text-charcoal dark:hover:text-off-white font-bold uppercase tracking-widest text-xs transition-all duration-300 shadow-lg transform hover:-translate-y-1">
+            <i class="fas fa-home mr-3"></i> Back To Homepage
+          </a>
+          <a href="collections.html" class="w-full sm:w-auto inline-flex items-center justify-center px-10 py-4 bg-transparent border border-gray-300 dark:border-gray-700 text-charcoal dark:text-off-white hover:border-soft-gold hover:text-soft-gold font-bold uppercase tracking-widest text-xs transition-all duration-300 transform hover:-translate-y-1">
+            View Collections
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const html = document.documentElement;
+    // Retain theme and RTL preferences if set from other pages
+    if (localStorage.getItem('theme') === 'dark') html.classList.add('dark');
+    if (localStorage.getItem('direction') === 'rtl') html.setAttribute('dir', 'rtl');
+  </script>
+</body>
+</html>
